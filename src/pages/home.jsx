@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import Loader from "../components/loader";
+import Island from "../models/island";
 
 {
   /* <div className="absolute top-28 left-0 right-0 z-10 flex justify-center items-center">
@@ -20,6 +21,7 @@ const Home = () => {
           <pointLight />
           <spotLight />
           <hemisphereLight />
+          <Island />
         </Suspense>
       </Canvas>
     </section>
