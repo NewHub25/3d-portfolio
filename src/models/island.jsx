@@ -13,7 +13,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import IslandScene from "../assets/3d/island.glb";
 import { a } from "@react-spring/three";
 
-const Island = ({ isRotating, setIsRotating, ...props }) => {
+const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   const { gl, viewport } = useThree();
   const islandRef = useRef();
   const { nodes, materials } = useGLTF(IslandScene);
@@ -59,7 +59,6 @@ const Island = ({ isRotating, setIsRotating, ...props }) => {
   };
 
   useFrame(() => {
-    return;
     if (!isRotating) {
       rotationSpeed.current *= dampingFactor;
       if (Math.abs(rotationSpeed.current) < 0.001) {
