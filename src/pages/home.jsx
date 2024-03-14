@@ -2,6 +2,9 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import Loader from "../components/loader";
 import Island from "../models/island";
+import Sky from "../models/sky";
+import Bird from "../models/bird";
+import Plane from "../models/plane";
 
 {
   /* <div className="absolute top-28 left-0 right-0 z-10 flex justify-center items-center">
@@ -32,15 +35,20 @@ const Home = () => {
       >
         <Suspense fallback={<Loader />}>
           <directionalLight position={[1, 1, 1]} intensity={2} />
-          <ambientLight />
-          <pointLight />
-          <spotLight />
-          <hemisphereLight />
+          <ambientLight intensity={0.5} />
+          <hemisphereLight
+            skyColor="#b1e1ff"
+            groundColor="#000000"
+            intensity={1}
+          />
+          <Bird />
+          <Sky />
           <Island
             scale={islandScale}
             position={islandPosition}
             rotation={islandRotation}
           />
+          <Plane />
         </Suspense>
       </Canvas>
     </section>
