@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 import Fox from "../models/fox";
 import Loader from "../components/loader";
+import useAlert from "../hooks/use-alert";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -13,6 +14,7 @@ const Contact = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [currentAnimation, setCurrentAnimation] = useState("idle");
+  const { alert, showAlert, hideAlert } = useAlert();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,22 +38,26 @@ const Contact = () => {
         { publicKey: import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY }
       )
       .then(() => {
-        // TODO: Show success message
-        // TODO: Hide an alert
+        showAlert({ text: "Message sent successfully!", type: "success" });
         setForm({ name: "", email: "", message: "" });
       })
       .catch((err) => {
+        showAlert({ text: "I didn't receive your message" });
         console.log(err);
         // TODO: Show error message
       })
       .finally(() => {
         setIsLoading(false);
-        setTimeout(setCurrentAnimation, 3000, "idle");
+        setTimeout(() => {
+          setCurrentAnimation("idle");
+          hideAlert();
+        }, 3000);
       });
   };
 
   return (
     <section className="relative flex lg:flex-row flex-col max-container">
+      {alert.show && <Alert {...alert} />}
       <div className="flex flex-1 min-w-[50%] flex-col">
         <h1 className="head-text">Get in Touch</h1>
         <form
