@@ -4,7 +4,7 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { experiences, skills } from "../constants";
-import Cta from "../components/cta";
+import CTA from "../components/cta";
 
 const About = () => {
   return (
@@ -111,7 +111,7 @@ const About = () => {
         </div>
       </div>
       <hr className="border-slate-200" />
-      <Cta />
+      <CTA />
     </section>
   );
 };

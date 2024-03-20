@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Cta = () => {
+const CTA = () => {
   return (
     <footer className="cta">
       <p className="cta-text">
@@ -14,4 +14,4 @@ const Cta = () => {
   );
 };
 
-export default Cta;
+export default CTA;
