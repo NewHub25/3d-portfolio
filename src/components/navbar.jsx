@@ -1,13 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   return (
     <header className="header">
       <NavLink
         to={"/"}
-        className="w-10 h-10 rounded-lg bg-white flex justify-center items-center font-bold shadow-md"
+        className="h-10 w-fit px-2 rounded-lg bg-white flex justify-center items-center font-bold shadow-md"
       >
-        <p className="blue-gradient_text">AH</p>
+        <p
+          className={`blue-gradient_text capitalize ${
+            pathname === "/" ? "" : "!text-black-500"
+          }`}
+        >
+          home
+        </p>
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
