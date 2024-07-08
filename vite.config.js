@@ -5,5 +5,5 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ["**/*.glb"],
-  base: "/3d-portfolio/"
+  // base: "/3d-portfolio/"
 });
